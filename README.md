@@ -63,4 +63,4 @@ python setup.py sdist bdist_wheel
 4} Upload package to nexus.
 ```
 twine upload dist/*
-```%  
+```
