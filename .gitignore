@@ -1,0 +1,7 @@
+.idea/
+
+# Ignore build and distribution directories
+build/
+dist/
+config_server_client_python.egg-info/
+src/__pycache__/
