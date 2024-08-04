@@ -1,35 +1,53 @@
-#config-server-client-python
+# config-server-client-python
 
-Streamline configuration management by fetching and updating configurations from a sping-cloud-config-server in Python.
+Streamline configuration management by fetching and updating configurations from a Spring Cloud Config Server in Python.
 
-#How to use config-serve-client-python package in django/flask framework.
+## Overview
 
-Within the repository, we maintain clients for Python Framework. The Python client is responsible for retrieving configurations from the Spring Cloud Config Server and seamlessly integrating them as environment variables within the container.
+`config-server-client-python` is a client library designed to interact with the Spring Cloud Config Server, facilitating seamless integration of configuration properties into your Python applications. This package is particularly useful for applications built using frameworks such as Django and Flask.
 
+## Features
 
-#Python sping-cloud-config-server client
+- Fetch configurations from a Spring Cloud Config Server.
+- Update configurations as environment variables within the container.
+- Easy integration with Python frameworks like Django and Flask.
+- Simplified configuration management for microservices architecture.
 
-1} Add config-server-client-python package to requirements.txt
-```
+## Installation
+
+Add `config-server-client-python` to your `requirements.txt` file:
+```python
 config-server-client-python==<version_no>
 ```
-2} In manage.py import ConfigServerPythonClient as given below.
-```
+## Usage
+
+### Django/Flask Integration
+
+In your `manage.py` or equivalent entry point, import the `ConfigServerPythonClient`:
+
+```python
 from src.config_server_python_library import ConfigServerPythonClient
-```
-3} Initiate ConfigServerPythonClient function in __main__. 
-```
-client = ConfigServerPythonClient(os.getenv('CONFIG_SERVER_URL'), <service-name>, <profile-list>, os.getenv('COMMIT_ID'), os.getenv('ENV_NAMESPACE'))
+
+client = ConfigServerPythonClient(
+    os.getenv('CONFIG_SERVER_URL'), 
+    <service-name>, 
+    <profile-list>, 
+    os.getenv('COMMIT_ID'), 
+    os.getenv('ENV_NAMESPACE')
+)
 client.write_configs_to_env()
 ```
+This will retrieve the configurations from the Spring Cloud Config Server and set them as environment variables for your application.
 
+## Development and Deployment
 
-#How to push a new version of config-server-client-python to nexus:
+### Pushing a New Version to Nexus
+
 
 1} Clone config-server-client-python repo.
 
 ```
-git clone https://github.com/jayantreddy181198/config-server-client-python.git <destination_path>/config-server-client-python
+git clone https://github.com/jayantreddy181198/config-server-client-python.git <destination_path>/tm-config-server-client-python
 ```
 
 2} Install twine and setuptools from pypi if not exists already.
@@ -37,19 +55,12 @@ git clone https://github.com/jayantreddy181198/config-server-client-python.git <
 pip install twine setuptools
 ```
 
-3} Navigate to config-server-client-python repo.
-```
-cd <destination_path>/config-server-client-python
-```
-
-4} Make the required changes and update the version in setup.py
-
-5} RUN below command to create sdist.
+3} RUN below command to create sdist.
 ```
 python setup.py sdist bdist_wheel
 ```
 
-6} Upload package to nexus.
+4} Upload package to nexus.
 ```
-twine upload --repository pypi-release dist/*
-```
+twine upload dist/*
+```%  
