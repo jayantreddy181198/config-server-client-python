@@ -3,7 +3,7 @@ import os
 import re
 
 class FetchConfigFromServerException(Exception):
-    def __init__(self, error, message="Failed to fetch property source from turtle-config-server"):
+    def __init__(self, error, message="Failed to fetch property source from spring-cloud-config-server"):
         self.message = message
         self.error = error
         super().__init__(f"{self.message}: {error}")
